@@ -8,6 +8,8 @@ const button = document.querySelector("button");
 const consent = document.querySelector("#consent");
 const form = document.querySelector("form");
 const messageBox = document.querySelector(".messagebox");
+const genSupport = document.querySelector(".support-one"); 
+const supSupport = document.querySelector(".support-two");
 
 const divFirstName = document.querySelector(".firstname"); 
 const divLastName = document.querySelector(".lastname");
@@ -16,13 +18,14 @@ const divQuery = document.querySelector(".query-options");
 const divMessage = document.querySelector(".message"); // Add a class for message div
 const divConsent = document.querySelector(".consent"); // Add a class for consent div
 
-let errorFlag = false;
 
 // logic
 
 form.addEventListener("submit", (event) => { 
 
     event.preventDefault();
+
+    let errorFlag = false;
 
     divFirstName.querySelectorAll('p').forEach(p => p.remove());
     divLastName.querySelectorAll('p').forEach(p => p.remove());
@@ -35,35 +38,52 @@ form.addEventListener("submit", (event) => {
         const pFirstName = document.createElement("p");
         pFirstName.textContent = "This field is required *"; 
         divFirstName.appendChild(pFirstName); 
+        firstName.style.borderColor = "red";
         errorFlag = true;
+    } else { 
+        firstName.style.borderColor = "lightgray";
     }
 
     if (lastName.value === "") { 
         const pLastName = document.createElement("p");
         pLastName.textContent = "This field is required *"; 
         divLastName.appendChild(pLastName); 
+        lastName.style.borderColor = "red";
         errorFlag = true;
+    } else { 
+        lastName.style.borderColor = "lightgray";
     }
 
     if (emailInp.value === "") { 
         const pEmail = document.createElement("p");
         pEmail.textContent = "Please enter a valid email address *"; 
         divEmail.appendChild(pEmail); 
+        emailInp.style.borderColor = "red";
         errorFlag = true;
+    } else { 
+        emailInp.style.borderColor = "lightgray";
     }
 
     if (!genQuery.checked && !supQuery.checked) { 
         const pQuery = document.createElement("p");
         pQuery.textContent = "Please select a query type *"; 
         divQuery.appendChild(pQuery); 
+        genSupport.style.borderColor = "red";
+        supSupport.style.borderColor = "red";
         errorFlag = true;
+    } else { 
+        genSupport.style.borderColor = "lightgray";
+        supSupport.style.borderColor = "lightgray";
     }
 
     if (messageInp.value === "") { 
         const pMessage = document.createElement("p");
         pMessage.textContent = "This field is required *"; 
         divMessage.appendChild(pMessage); 
+        messageInp.style.borderColor = "red";
         errorFlag = true;
+    } else { 
+        messageInp.style.borderColor = "lightgray";
     }
 
     if (!consent.checked) { 
