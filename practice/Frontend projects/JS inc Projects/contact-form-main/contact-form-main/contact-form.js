@@ -94,6 +94,15 @@ form.addEventListener("submit", (event) => {
     }
 
     if (!errorFlag) {
+
+        firstName.value = ""; 
+        lastName.value = "";
+        emailInp.value = ""; 
+        genQuery.checked = false; 
+        supQuery.checked = false; 
+        messageInp.value = ""; 
+        consent.checked = false; 
+        
         messageBox.style.display = "block";
         setTimeout(() => { 
             messageBox.style.display = "none";
